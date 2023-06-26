@@ -3,12 +3,13 @@ const app = express();
 const userRoutes = require('./routes/userRoutes')
 const User = require('./models/User');
 const Message = require('./models/Message')
-const rooms = ['general', 'tech', 'finance', 'crypto'];
 const cors = require('cors');
 
-app.use(express.urlencoded({extended: true}));
+const rooms = ['general', 'tech', 'finance', 'crypto'];
+
+app.use(express.urlencoded({extended: true})); // for receiving data from the frontend
 app.use(express.json());
-app.use(cors());
+app.use(cors()); // for allowing back and front communicate
 
 app.use('/users', userRoutes)
 require('./connection')
